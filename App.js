@@ -6,7 +6,7 @@ form.addEventListener("submit", function (e) {
   task.value = "";
 });
 let id = 1;
-const taskList = document.querySelector("#taskList");
+let taskList = document.querySelector("#taskList");
 
 const addTask = function (taskName) {
   if (taskName === "") return;
@@ -32,12 +32,18 @@ taskList.addEventListener("click", function (e) {
 const markComplete = function () {
   let allTasks = document.querySelectorAll("li");
   for (let task of allTasks) {
-    console.log("here");
     task.classList.add("cross");
   }
 };
 const markCompleteBtn = document.querySelector("#mark-complete-btn");
 markCompleteBtn.addEventListener("click", function () {
-  console.log("inside");
   markComplete();
+});
+
+const resetBtn = document.querySelector("#reset-btn");
+
+resetBtn.addEventListener("click", function () {
+  while (taskList.firstChild) {
+    taskList.removeChild(taskList.lastChild);
+  }
 });
