@@ -7,7 +7,9 @@ form.addEventListener("submit", function (e) {
 });
 let id = 1;
 const taskList = document.querySelector("#taskList");
+
 const addTask = function (taskName) {
+  if (taskName === "") return;
   const lis = document.createElement("li");
   lis.setAttribute("id", `${id}`);
   id++;
@@ -25,4 +27,17 @@ taskList.addEventListener("click", function (e) {
     }
   }
   //e.target.cl
+});
+
+const markComplete = function () {
+  let allTasks = document.querySelectorAll("li");
+  for (let task of allTasks) {
+    console.log("here");
+    task.classList.add("cross");
+  }
+};
+const markCompleteBtn = document.querySelector("#mark-complete-btn");
+markCompleteBtn.addEventListener("click", function () {
+  console.log("inside");
+  markComplete();
 });
